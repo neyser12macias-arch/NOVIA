@@ -1,1 +1,1261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corazón Galáctico 💫 Día de la Novia</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dancing-script@5.0.18/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.14/index.css">
+<style>
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0a0118;
+  color: #ffffff;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><text y='18' font-size='18'>✨</text></svg>"), auto;
+}
+
+/* ═══════════════════════════════════════
+   STARFIELD CANVAS
+═══════════════════════════════════════ */
+#starfield {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════
+   FLOATING PARTICLES
+═══════════════════════════════════════ */
+.floating-particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.float-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════
+   SECTIONS COMMON
+═══════════════════════════════════════ */
+section {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+}
+.hero-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #ff6ec7,
+    0 0 30px #ff6ec7,
+    0 0 60px #a855f7,
+    0 0 100px #a855f7;
+  animation: glowPulse 3s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 10px #ff6ec7, 0 0 30px #ff6ec7, 0 0 60px #a855f7, 0 0 100px #a855f7; }
+  50% { text-shadow: 0 0 15px #ff6ec7, 0 0 40px #ff6ec7, 0 0 80px #a855f7, 0 0 120px #a855f7, 0 0 160px #c084fc; }
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: #e9d5ff;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Heart made of particles */
+.heart-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 30px auto;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+  60% { transform: scale(1); }
+}
+.heart-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff6ec7;
+  box-shadow: 0 0 6px #ff6ec7, 0 0 12px #a855f7;
+  animation: twinkle 2s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* CTA Button */
+.cta-btn {
+  display: inline-block;
+  padding: 18px 42px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #a855f7, #ff6ec7);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(255, 110, 199, 0.3);
+  animation: btnPulse 2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+.cta-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(255, 110, 199, 0.5);
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(255, 110, 199, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(255, 110, 199, 0.5), 0 0 80px rgba(192, 132, 252, 0.3); }
+}
+
+/* ═══════════════════════════════════════
+   COUNTER SECTION
+═══════════════════════════════════════ */
+#counter {
+  background: radial-gradient(ellipse at center, rgba(13, 27, 62, 0.6) 0%, transparent 70%);
+}
+.counter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #c084fc;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.counter-subtitle {
+  font-size: 1.1rem;
+  color: #e9d5ff;
+  margin-bottom: 50px;
+  text-align: center;
+  opacity: 0.8;
+}
+.counter-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.counter-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px 24px;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.counter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.counter-value {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6ec7, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.counter-label {
+  font-size: 0.85rem;
+  color: #e9d5ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════
+   LETTER SECTION
+═══════════════════════════════════════ */
+#letter {
+  background: radial-gradient(ellipse at 30% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 60%);
+}
+.letter-container {
+  max-width: 700px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.letter-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 110, 199, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.letter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #ff6ec7;
+  text-shadow: 0 0 15px rgba(255, 110, 199, 0.4);
+  margin-bottom: 30px;
+  text-align: center;
+}
+.letter-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #e9d5ff;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.letter-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.letter-signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: #c084fc;
+  text-align: right;
+  margin-top: 30px;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.letter-signature.visible {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   GALLERY SECTION
+═══════════════════════════════════════ */
+#gallery {
+  background: radial-gradient(ellipse at 70% 30%, rgba(13, 27, 62, 0.5) 0%, transparent 60%);
+}
+.gallery-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #c084fc;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  margin-bottom: 50px;
+  text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(168, 85, 247, 0.3);
+}
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(168, 85, 247, 0.4);
+  border-color: rgba(255, 110, 199, 0.6);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(10, 1, 24, 0.9));
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+.gallery-caption p {
+  font-size: 0.9rem;
+  color: #e9d5ff;
+  font-weight: 300;
+}
+.gallery-caption .caption-date {
+  font-size: 0.75rem;
+  color: #ff6ec7;
+  margin-top: 4px;
+}
+
+/* Constellation SVG overlay */
+.constellation-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.constellation-line {
+  stroke: rgba(168, 85, 247, 0.25);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+  animation: dashFlow 3s linear infinite;
+}
+@keyframes dashFlow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* ══════════════════════════════════════
+   STARS SECTION (Interactive)
+═══════════════════════════════════════ */
+#stars-section {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, rgba(26, 11, 46, 0.8) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+.stars-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #ff6ec7;
+  text-shadow: 0 0 20px rgba(255, 110, 199, 0.5);
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 3;
+}
+.stars-subtitle {
+  color: #e9d5ff;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  text-align: center;
+  opacity: 0.7;
+  z-index: 3;
+}
+.stars-canvas-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+#starsCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 1, 24, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-content {
+  background: rgba(26, 11, 46, 0.9);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.2);
+  transform: scale(0.8);
+  transition: transform 0.4s ease;
+  position: relative;
+}
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #e9d5ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.modal-close:hover { color: #ff6ec7; }
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+.modal-message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: #c084fc;
+  line-height: 1.6;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+/* ══════════════════════════════════════
+   CLOSING SECTION
+═══════════════════════════════════════ */
+#closing {
+  min-height: 80vh;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.1) 0%, transparent 60%);
+}
+.closing-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #ff6ec7,
+    0 0 30px #a855f7,
+    0 0 60px #a855f7;
+  margin-bottom: 40px;
+  animation: glowPulse 3s ease-in-out infinite;
+  line-height: 1.4;
+}
+.back-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #e9d5ff;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 60px;
+}
+.back-btn:hover {
+  background: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+.footer-text {
+  font-size: 0.85rem;
+  color: #e9d5ff;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+
+/* ═══════════════════════════════════════
+   MUSIC PLAYER
+═══════════════════════════════════════ */
+.music-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #ff6ec7);
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6);
+}
+.music-btn .note-icon {
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+.music-btn.playing .note-icon {
+  animation: noteSpin 2s linear infinite;
+}
+@keyframes noteSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding: 60px 16px; }
+  .letter-container { padding: 30px 20px; }
+  .counter-card { min-width: 90px; padding: 20px 16px; }
+  .gallery-grid { grid-template-columns: 1fr; max-width: 350px; }
+  .heart-container { width: 150px; height: 150px; }
+  .modal-content { padding: 30px 20px; }
+  .music-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0118; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#a855f7, #ff6ec7); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- Starfield Canvas -->
+<canvas id="starfield"></canvas>
+
+<!-- Floating Particles -->
+<div class="floating-particles" id="floatingParticles"></div>
+
+<!-- ═══════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════ -->
+<section id="hero">
+  <h1 class="hero-title">Corazón Galáctico 💫</h1>
+  <p class="hero-subtitle">Un regalo para la persona que ilumina mi galaxia</p>
+
+  <div class="heart-container" id="heartContainer"></div>
+
+  <a href="#counter" class="cta-btn">Descubre tu universo ✨</a>
+</section>
+
+<!-- ═══════════════════════════════════════
+     COUNTER SECTION
+═══════════════════════════════════════ -->
+<section id="counter">
+  <h2 class="counter-title">Tiempo a tu lado</h2>
+  <p class="counter-subtitle">Cada segundo contigo es un viaje por las estrellas</p>
+  <div class="counter-grid">
+    <div class="counter-card">
+      <div class="counter-value" id="daysCount">0</div>
+      <div class="counter-label">Días</div>
+    </div>
+    <div class="counter-card">
+      <div class="counter-value" id="hoursCount">0</div>
+      <div class="counter-label">Horas</div>
+    </div>
+    <div class="counter-card">
+      <div class="counter-value" id="minutesCount">0</div>
+      <div class="counter-label">Minutos</div>
+    </div>
+    <div class="counter-card">
+      <div class="counter-value" id="secondsCount">0</div>
+      <div class="counter-label">Segundos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     LETTER SECTION
+═══════════════════════════════════════ -->
+<section id="letter">
+  <div class="letter-container">
+    <h2 class="letter-title">Para ti, mi estrella ✨</h2>
+    <p class="letter-text">
+      Desde aquel 25 de octubre del 2024, sin darme cuenta te fuiste volviendo mi lugar seguro. Gracias por estar en mi vida, por acompañarme en mis días buenos y también en los que no lo son tanto. Con vos aprendí que amar también es tener paciencia, hablar las cosas y seguir eligiéndonos.
+    </p>
+    <p class="letter-text">
+      Me gusta cuando me cuentas cómo estuvo tu día, cuando me mandas audios, cuando nos reímos por cualquier tontera y cuando, sin darte cuenta, haces que todo se sienta más tranquilo. Gracias por hacerme sentir querido y por dejarme ser parte de tu vida.
+    </p>
+    <p class="letter-text">
+      Sé que no somos perfectos, hemos tenido errores y momentos difíciles, pero también hemos demostrado que queremos mejorar. Eso es lo que más amo de nosotros, que no nos rendimos fácil y seguimos luchando por lo que estamos construyendo.
+
+    </p>
+    <p class="letter-text">
+      Le doy gracias a Dios por haberte puesto en mi camino. Mi meta es seguir siendo un mejor hombre para vos, cuidarte, respetarte y hacer que cada día te sientas amada.
+    </p>
+       <p class="letter-text">
+      No escribo esto solo porque suene bonito. Lo escribo porque es lo que siento. Quiero seguir celebrando cada 25, seguir haciendo recuerdos con vos y seguir construyendo una relación que tenga a Dios en el centro y que dure mucho tiempo.   
+     </p>
+    <p class="letter-signature">Con todo mi amor, tu morenito 💘</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GALLERY SECTION
+═══════════════════════════════════════ -->
+<section id="gallery">
+  <h2 class="gallery-title">Constelación de Recuerdos 🌟</h2>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Filled by JS -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     STARS SECTION (Interactive)
+═══════════════════════════════════════ -->
+<section id="stars-section">
+  <h2 class="stars-title">Estrellas de Recuerdos </h2>
+  <p class="stars-subtitle">Toca cada estrella para descubrir un mensaje especial</p>
+  <div class="stars-canvas-container">
+    <canvas id="starsCanvas"></canvas>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CLOSING SECTION
+═══════════════════════════════════════ -->
+<section id="closing">
+  <h2 class="closing-text">Te amo hasta el infinito<br>y las estrellas 🌌</h2>
+  <a href="#hero" class="back-btn">Volver a empezar 🚀</a>
+  <p class="footer-text">Hecho con amor para mi universo — 2026 </p>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-icon" id="modalIcon">⭐</div>
+    <p class="modal-message" id="modalMessage"></p>
+  </div>
+</div>
+
+<!-- Music Button -->
+<button class="music-btn" id="musicBtn" title="Reproducir música">
+  <span class="note-icon">🎵</span>
+</button>
+<audio id="backgroundAudio" preload="auto" loop></audio>
+
+<script>
+/* ═══════════════════════════════════════
+   CONFIGURACIÓN PERSONALIZABLE
+   ️ Edita estos valores para personalizar
+═══════════════════════════════════════ */
+const CONFIG = {
+  herName: "Mi Amor",
+  myName: "Tu Universo",
+  startDate: "2024-10-25", // Formato: YYYY-MM-DD
+  letterSignature: "Con todo mi amor, Tu Universo 💜",
+  footerText: "Hecho con amor para mi universo — 2026 💜",
+  closingText: "Te amo hasta el infinito y las estrellas 🌌",
+  musicSrc: "mi cancion.mp3",
+
+  photos: [
+    { src: "foto1.jpeg", caption: "MI LOKILLA", date: "En tu colegio" },
+    { src: "foto2.jpeg", caption: "Dia inolvidable", date: "SAMANES " },
+    { src: "foto3.jpeg", caption: "Amoo eso ojos", date: "Ojos mas hermosos" },
+    { src: "foto4.jpeg", caption: "Tan tiernaa", date: "En tu parque" },
+    { src: "foto5.jpeg", caption: "Dos bobitos", date: "Samanes" },
+    { src: "foto6.jpeg", caption: "Amo cada foto tuya", date: "Cada momento contigo" }
+  ],
+
+  starMessages: [
+    { icon: "💕", message: "Prometo hacerte reír todos los días, incluso cuando el universo esté en contra." },
+    { icon: "🌙", message: "Eres mi luna en las noches más oscuras. Siempre me guías a casa." },
+    { icon: "⭐", message: "Cada estrella en el cielo me recuerda a ti. Son infinitas, como mi amor." },
+    { icon: "🌌", message: "Contigo quiero explorar cada galaxia, cada planeta, cada rincón del cosmos." },
+    { icon: "💫", message: "Prometo ser tu estrella fugaz: aparecer cuando más me necesites." },
+    { icon: "🪐", message: "Eres mi planeta favorito. El único lugar donde quiero vivir para siempre." },
+    { icon: "️", message: "Nuestro amor es como un cometa: brillante, único e inolvidable." },
+    { icon: "🌠", message: "Cada día contigo es un deseo que se cumple. Gracias por existir." }
+  ]
+};
+
+/* ═══════════════════════════════════════
+   STARFIELD BACKGROUND
+═══════════════════════════════════════ */
+(function initStarfield() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let shootingStars = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.documentElement.scrollHeight;
+  }
+
+  function createStars() {
+    const count = Math.min(400, Math.floor((w * h) / 5000));
+    stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        radius: Math.random() * 1.5 + 0.3,
+        alpha: Math.random(),
+        alphaDir: (Math.random() - 0.5) * 0.02,
+        color: Math.random() > 0.85 ? '#ffd700' : (Math.random() > 0.7 ? '#c084fc' : '#ffffff')
+      });
+    }
+  }
+
+  function createShootingStar() {
+    shootingStars.push({
+      x: Math.random() * w,
+      y: Math.random() * h * 0.5,
+      len: Math.random() * 80 + 40,
+      speed: Math.random() * 8 + 6,
+      angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+      alpha: 1,
+      decay: Math.random() * 0.015 + 0.01
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw stars
+    for (let s of stars) {
+      s.alpha += s.alphaDir;
+      if (s.alpha <= 0.1 || s.alpha >= 1) s.alphaDir *= -1;
+      s.alpha = Math.max(0.1, Math.min(1, s.alpha));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = s.alpha;
+      ctx.fill();
+    }
+
+    // Draw shooting stars
+    for (let i = shootingStars.length - 1; i >= 0; i--) {
+      const ss = shootingStars[i];
+      const endX = ss.x - Math.cos(ss.angle) * ss.len;
+      const endY = ss.y - Math.sin(ss.angle) * ss.len;
+      const grad = ctx.createLinearGradient(ss.x, ss.y, endX, endY);
+      grad.addColorStop(0, `rgba(255, 255, 255, ${ss.alpha})`);
+      grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(endX, endY);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 1;
+      ctx.stroke();
+
+      ss.x += Math.cos(ss.angle) * ss.speed;
+      ss.y += Math.sin(ss.angle) * ss.speed;
+      ss.alpha -= ss.decay;
+      if (ss.alpha <= 0) shootingStars.splice(i, 1);
+    }
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createStars();
+  draw();
+
+  setInterval(createShootingStar, 4000 + Math.random() * 4000);
+
+  window.addEventListener('resize', () => { resize(); createStars(); });
+
+  // Update canvas height on scroll
+  let resizeTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newH = document.documentElement.scrollHeight;
+      if (newH !== h) { resize(); createStars(); }
+    }, 300);
+  });
+})();
+
+/* ═══════════════════════════════════════
+   FLOATING PARTICLES
+═══════════════════════════════════════ */
+(function initFloatingParticles() {
+  const container = document.getElementById('floatingParticles');
+  const colors = ['#ff6ec7', '#a855f7', '#c084fc', '#ffd700'];
+  const count = 20;
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'float-particle';
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.boxShadow = `0 0 ${size * 2}px ${p.style.background}`;
+    p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    container.appendChild(p);
+  }
+})();
+
+/* ═══════════════════════════════════════
+   HEART PARTICLES
+═══════════════════════════════════════ */
+(function initHeart() {
+  const container = document.getElementById('heartContainer');
+  const points = [];
+  // Heart shape parametric equation
+  for (let t = 0; t < Math.PI * 2; t += 0.15) {
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+    points.push({ x: x * 5.5 + 100, y: y * 5.5 + 100 });
+  }
+
+  points.forEach((pt, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'heart-particle';
+    dot.style.left = pt.x + 'px';
+    dot.style.top = pt.y + 'px';
+    dot.style.animationDelay = (idx * 0.1) + 's';
+    dot.style.background = idx % 3 === 0 ? '#ffd700' : (idx % 2 === 0 ? '#c084fc' : '#ff6ec7');
+    container.appendChild(dot);
+  });
+
+  // Inner fill particles
+  for (let i = 0; i < 30; i++) {
+    const t = Math.random() * Math.PI * 2;
+    const r = Math.random() * 0.7;
+    const x = 16 * Math.pow(Math.sin(t), 3) * r * 5.5 + 100;
+    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * r * 5.5 + 100;
+    const dot = document.createElement('div');
+    dot.className = 'heart-particle';
+    dot.style.left = x + 'px';
+    dot.style.top = y + 'px';
+    dot.style.animationDelay = (Math.random() * 3) + 's';
+    dot.style.opacity = '0.6';
+    container.appendChild(dot);
+  }
+})();
+
+/* ═══════════════════════════════════════
+   RELATIONSHIP COUNTER
+═══════════════════════════════════════ */
+(function initCounter() {
+  const startDate = new Date(CONFIG.startDate);
+  const daysEl = document.getElementById('daysCount');
+  const hoursEl = document.getElementById('hoursCount');
+  const minutesEl = document.getElementById('minutesCount');
+  const secondsEl = document.getElementById('secondsCount');
+
+  function update() {
+    const now = new Date();
+    const diff = now - startDate;
+    if (diff < 0) return;
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    daysEl.textContent = days;
+    hoursEl.textContent = hours;
+    minutesEl.textContent = minutes;
+    secondsEl.textContent = seconds;
+  }
+
+  update();
+  setInterval(update, 1000);
+})();
+
+/* ═══════════════════════════════════════
+   INTERSECTION OBSERVER (Fade-in sections)
+═══════════════════════════════════════ */
+(function initObservers() {
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        entry.target.classList.remove('section-hidden');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach(s => {
+    s.classList.add('section-hidden');
+    observer.observe(s);
+  });
+
+  // Letter paragraphs
+  const letterTexts = document.querySelectorAll('.letter-text, .letter-signature');
+  const letterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  letterTexts.forEach(t => letterObserver.observe(t));
+})();
+
+/* ═══════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════ */
+(function initGallery() {
+  const grid = document.getElementById('galleryGrid');
+  CONFIG.photos.forEach((photo, idx) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.innerHTML = `
+      <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
+      <div class="gallery-caption">
+        <p>${photo.caption}</p>
+        <p class="caption-date">${photo.date}</p>
+      </div>
+    `;
+    grid.appendChild(item);
+  });
+
+  // Draw constellation lines between gallery items
+  setTimeout(drawConstellationLines, 500);
+  window.addEventListener('resize', drawConstellationLines);
+})();
+
+function drawConstellationLines() {
+  // Remove existing SVG
+  const existing = document.querySelector('.constellation-svg');
+  if (existing) existing.remove();
+
+  const grid = document.getElementById('galleryGrid');
+  const items = grid.querySelectorAll('.gallery-item');
+  if (items.length < 2) return;
+
+  const gridRect = grid.getBoundingClientRect();
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'constellation-svg');
+  svg.setAttribute('viewBox', `0 0 ${gridRect.width} ${gridRect.height}`);
+  svg.style.position = 'absolute';
+  svg.style.top = '0';
+  svg.style.left = '0';
+  svg.style.width = '100%';
+  svg.style.height = '100%';
+  svg.style.pointerEvents = 'none';
+  svg.style.zIndex = '1';
+
+  const centers = [];
+  items.forEach(item => {
+    const r = item.getBoundingClientRect();
+    centers.push({
+      x: r.left - gridRect.left + r.width / 2,
+      y: r.top - gridRect.top + r.height / 2
+    });
+  });
+
+  // Connect nearby items
+  for (let i = 0; i < centers.length; i++) {
+    for (let j = i + 1; j < centers.length; j++) {
+      const dx = centers[j].x - centers[i].x;
+      const dy = centers[j].y - centers[i].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 500) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', centers[i].x);
+        line.setAttribute('y1', centers[i].y);
+        line.setAttribute('x2', centers[j].x);
+        line.setAttribute('y2', centers[j].y);
+        line.setAttribute('class', 'constellation-line');
+        svg.appendChild(line);
+      }
+    }
+  }
+
+  grid.style.position = 'relative';
+  grid.appendChild(svg);
+}
+
+/* ═══════════════════════════════════════
+   INTERACTIVE STARS
+═══════════════════════════════════════ */
+(function initInteractiveStars() {
+  const canvas = document.getElementById('starsCanvas');
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  let clickableStars = [];
+  let bgStars = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = container.clientWidth;
+    h = canvas.height = container.clientHeight;
+  }
+
+  function createBgStars() {
+    bgStars = [];
+    for (let i = 0; i < 100; i++) {
+      bgStars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.5 + 0.3,
+        twinkleSpeed: Math.random() * 0.02 + 0.005
+      });
+    }
+  }
+
+  function createClickableStars() {
+    clickableStars = [];
+    const positions = [];
+    const minDist = 80;
+
+    for (let i = 0; i < CONFIG.starMessages.length; i++) {
+      let x, y, attempts = 0;
+      do {
+        x = Math.random() * (w - 100) + 50;
+        y = Math.random() * (h - 100) + 50;
+        attempts++;
+      } while (attempts < 100 && positions.some(p => {
+        const dx = p.x - x, dy = p.y - y;
+        return Math.sqrt(dx*dx + dy*dy) < minDist;
+      }));
+      positions.push({ x, y });
+
+      clickableStars.push({
+        x, y,
+        radius: 12,
+        pulsePhase: Math.random() * Math.PI * 2,
+        message: CONFIG.starMessages[i],
+        hovered: false
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const time = Date.now() * 0.001;
+
+    // Background stars
+    bgStars.forEach(s => {
+      const a = s.alpha + Math.sin(time * s.twinkleSpeed * 60) * 0.3;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, Math.min(1, a))})`;
+      ctx.fill();
+    });
+
+    // Clickable stars
+    clickableStars.forEach((star, idx) => {
+      const pulse = Math.sin(time * 2 + star.pulsePhase) * 0.3 + 1;
+      const r = star.radius * pulse;
+
+      // Glow
+      const glow = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, r * 4);
+      glow.addColorStop(0, 'rgba(255, 110, 199, 0.4)');
+      glow.addColorStop(0.5, 'rgba(168, 85, 247, 0.15)');
+      glow.addColorStop(1, 'rgba(168, 85, 247, 0)');
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, r * 4, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+
+      // Star shape
+      drawStarShape(ctx, star.x, star.y, r, 5);
+      ctx.fillStyle = star.hovered ? '#ffd700' : '#ff6ec7';
+      ctx.shadowColor = '#ff6ec7';
+      ctx.shadowBlur = 15;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Label
+      ctx.fillStyle = 'rgba(233, 213, 255, 0.7)';
+      ctx.font = '12px Poppins';
+      ctx.textAlign = 'center';
+      ctx.fillText(`Estrella ${idx + 1}`, star.x, star.y + r + 18);
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  function drawStarShape(ctx, cx, cy, r, points) {
+    ctx.beginPath();
+    for (let i = 0; i < points * 2; i++) {
+      const angle = (i * Math.PI) / points - Math.PI / 2;
+      const radius = i % 2 === 0 ? r : r * 0.4;
+      const x = cx + Math.cos(angle) * radius;
+      const y = cy + Math.sin(angle) * radius;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+  }
+
+  // Click handler
+  canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    for (let star of clickableStars) {
+      const dx = mx - star.x, dy = my - star.y;
+      if (Math.sqrt(dx*dx + dy*dy) < star.radius * 2) {
+        openModal(star.message);
+        break;
+      }
+    }
+  });
+
+  // Hover handler
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    clickableStars.forEach(star => {
+      const dx = mx - star.x, dy = my - star.y;
+      star.hovered = Math.sqrt(dx*dx + dy*dy) < star.radius * 2;
+    });
+    canvas.style.cursor = clickableStars.some(s => s.hovered) ? 'pointer' : 'default';
+  });
+
+  resize();
+  createBgStars();
+  createClickableStars();
+  draw();
+
+  window.addEventListener('resize', () => { resize(); createBgStars(); createClickableStars(); });
+})();
+
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalMessage = document.getElementById('modalMessage');
+const modalIcon = document.getElementById('modalIcon');
+const modalClose = document.getElementById('modalClose');
+
+function openModal(msg) {
+  modalIcon.textContent = msg.icon;
+  modalMessage.textContent = msg.message;
+  modalOverlay.classList.add('active');
+}
+
+modalClose.addEventListener('click', () => modalOverlay.classList.remove('active'));
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) modalOverlay.classList.remove('active');
+});
+
+/* ═══════════════════════════════════════
+   MUSIC PLAYER
+═══════════════════════════════════════ */
+const musicBtn = document.getElementById('musicBtn');
+const backgroundAudio = document.getElementById('backgroundAudio');
+let isPlaying = false;
+
+if (CONFIG.musicSrc) {
+  backgroundAudio.src = CONFIG.musicSrc;
+} else {
+  musicBtn.title = 'Agrega la ruta de tu canción en CONFIG.musicSrc';
+}
+
+musicBtn.addEventListener('click', () => {
+  if (!CONFIG.musicSrc) {
+    return;
+  }
+
+  if (backgroundAudio.paused) {
+    backgroundAudio.play().catch(() => {
+      // El navegador puede pedir interacción antes de reproducir.
+    });
+    musicBtn.classList.add('playing');
+    isPlaying = true;
+  } else {
+    backgroundAudio.pause();
+    musicBtn.classList.remove('playing');
+    isPlaying = false;
+  }
+});
+
+/* ═══════════════════════════════════════
+   PARALLAX EFFECT
+═══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const starfield = document.getElementById('starfield');
+  starfield.style.transform = `translateY(${scrolled * 0.3}px)`;
+});
+
+/* ═══════════════════════════════════════
+   SMOOTH SCROLL FOR CTA
+═══════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
 
