@@ -694,6 +694,7 @@ section {
 <button class="music-btn" id="musicBtn" title="Reproducir música">
   <span class="note-icon">🎵</span>
 </button>
+<audio id="backgroundAudio" preload="auto" loop></audio>
 
 <script>
 /* ═══════════════════════════════════════
@@ -707,6 +708,7 @@ const CONFIG = {
   letterSignature: "Con todo mi amor, Tu Universo 💜",
   footerText: "Hecho con amor para mi universo — 2026 💜",
   closingText: "Te amo hasta el infinito y las estrellas 🌌",
+  musicSrc: "mi cancion.mp3",
 
   photos: [
     { src: "foto1.jpeg", caption: "MI LOKILLA", date: "En tu colegio" },
@@ -1202,51 +1204,31 @@ modalOverlay.addEventListener('click', (e) => {
 });
 
 /* ═══════════════════════════════════════
-   MUSIC PLAYER (placeholder)
+   MUSIC PLAYER
 ═══════════════════════════════════════ */
 const musicBtn = document.getElementById('musicBtn');
+const backgroundAudio = document.getElementById('backgroundAudio');
 let isPlaying = false;
 
-// Create a simple oscillator-based ambient tone as placeholder
-let audioCtx, oscillator, gainNode;
+if (CONFIG.musicSrc) {
+  backgroundAudio.src = CONFIG.musicSrc;
+} else {
+  musicBtn.title = 'Agrega la ruta de tu canción en CONFIG.musicSrc';
+}
 
 musicBtn.addEventListener('click', () => {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (!CONFIG.musicSrc) {
+    return;
   }
 
-  if (!isPlaying) {
-    // Create a gentle ambient chord
-    oscillator = audioCtx.createOscillator();
-    gainNode = audioCtx.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(261.63, audioCtx.currentTime); // C4
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 1);
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    oscillator.start();
-
-    // Add a second tone for harmony
-    const osc2 = audioCtx.createOscillator();
-    const gain2 = audioCtx.createGain();
-    osc2.type = 'sine';
-    osc2.frequency.setValueAtTime(329.63, audioCtx.currentTime); // E4
-    gain2.gain.setValueAtTime(0, audioCtx.currentTime);
-    gain2.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 1);
-    osc2.connect(gain2);
-    gain2.connect(audioCtx.destination);
-    osc2.start();
-
+  if (backgroundAudio.paused) {
+    backgroundAudio.play().catch(() => {
+      // El navegador puede pedir interacción antes de reproducir.
+    });
     musicBtn.classList.add('playing');
     isPlaying = true;
   } else {
-    if (gainNode) {
-      gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
-    }
-    setTimeout(() => {
-      if (oscillator) { oscillator.stop(); oscillator = null; }
-    }, 600);
+    backgroundAudio.pause();
     musicBtn.classList.remove('playing');
     isPlaying = false;
   }
